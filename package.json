@@ -5,7 +5,6 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "local": "npm run compile && npm publish",
     "lint": "eslint src --ext .ts",
     "compile": "tsc"
   },
