@@ -11,6 +11,7 @@ import {
     getFileExtension,
     getFileContent,
     getTraceRelativePath,
+    getTraceFilePath,
 } from './utils';
 
 export const ThundraEsbuildPlugin = (options: Options) => ({
@@ -25,7 +26,7 @@ export const ThundraEsbuildPlugin = (options: Options) => ({
         const traceableConfigs: TraceableConfig[] = options.traceableConfigs.map((traceableConfigStr) => {
 
             const traceableConfig = TraceableConfig.fromString(traceableConfigStr);
-            pluginFilters.push(traceableConfig.pattern);
+            pluginFilters.push(getTraceFilePath(traceableConfig.pattern));
 
             return traceableConfig;
         });

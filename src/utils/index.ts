@@ -29,3 +29,13 @@ export const getTraceRelativePath = (path: string) => {
 
     return relPathWithDots;
 };
+
+export const getTraceFilePath = (pattern: string): string => {
+    const lidx = pattern.lastIndexOf('.');
+    if (lidx < 0) {
+        return pattern;
+    }
+
+    const substr = pattern.substring(0, lidx); 
+    return `${substr}.*`;
+};
