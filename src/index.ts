@@ -44,15 +44,18 @@ export const ThundraEsbuildPlugin = (options: Options) => ({
 
             const fileExtension = getFileExtension(filePath);
             const traceRelativePath = getTraceRelativePath(filePath);
-
-            const instrumentedSourceCode = sourceCodeInstrumenter.addTraceHooks(
-                contents,
-                traceRelativePath,
-                false,
-                args.path,
-            );
-
-            return { contents: instrumentedSourceCode, loader: fileExtension.substring(1) };
+            if (sourceCodeInstrumenter.shouldTraceFile(traceRelativePath)) {
+                const instrumentedSourceCode = sourceCodeInstrumenter.addTraceHooks(
+                    contents,
+                    traceRelativePath,
+                    false,
+                    args.path,
+                );
+    
+                return { contents: instrumentedSourceCode, loader: fileExtension.substring(1) };
+            } else {
+                return { contents };
+            }
         };
 
         build.onLoad({ filter, namespace: '' }, async (args: any) => {
