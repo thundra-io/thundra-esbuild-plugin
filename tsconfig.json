@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "target": "ES2017",
+        "rootDir": "src",
+        "outDir": "./dist",
+        "preserveConstEnums": true,
+        "removeComments": false,
+        "strictNullChecks": false
+    },
+    "include": [
+        "src"
+    ]
+}
