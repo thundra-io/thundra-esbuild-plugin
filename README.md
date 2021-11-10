@@ -16,7 +16,7 @@ module.exports = {
   plugins: [
     ThundraEsbuildPlugin({
       traceableConfigs: [
-        'src.*[traceLineByLine=true]', // activate line by line tracing for all files under src folder
+        'src.*.*[traceLineByLine=true]', // activate line by line tracing for all files under src folder
       ]
     })
   ]
@@ -37,5 +37,7 @@ Optional parameters that are specified between the brackets can be used to trace
 
 For example the value of a instrumentation definition string could be:
 
-* To instrument all functions in js files under `./user/service` folder with arguments to trace: `user.service.*[traceArgs=true]`
-* To instrument all functions which start with get methods in the js files `./user/service` folder with arguments to trace: `user.service.*.get*[traceArgs=true]`
+* To trace for all functions in `js` or `ts` files under `./src`: `src.*.*`
+* To trace all functions in `js` or `ts` files under `./src/service` folder with arguments: `src.service.*.*[traceArgs=true]`
+* To trace functions which start with `get` in the `js` or `ts` files under `./src/service` folder with arguments and return value: `src.service.*.get*[traceArgs=true,traceReturnValue=true]`
+* To enable TTD (Time Travel Debugging) for all functions in `userService` module (`js` or `ts` file) under `./src/service`: `src.service.userService.*[traceLineByLine=true]`

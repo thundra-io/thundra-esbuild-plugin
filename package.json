@@ -26,6 +26,6 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@thundra/instrumenter": "^1.3.4"
+    "@thundra/instrumenter": "^1.3.5"
   }
 }
