@@ -4,11 +4,12 @@
 
 ```bash
 npm install --save-dev @thundra/esbuild-plugin
-````
+```
 
 ## Usage
 #### **`esbuild.js`**
 ```js
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { ThundraEsbuildPlugin } = require('@thundra/esbuild-plugin');
 
 module.exports = {
@@ -23,11 +24,23 @@ module.exports = {
 };
 ```
 
+And then, in your **Function** definition in your stack, add the file above to your `bundle` configuration.
+
+```js
+// ...
+bundle: {
+  esbuildConfig: {
+    plugins: "esbuild.js",
+  },
+},
+// ...
+```
+
 To use the plugin, 'ThundraEsbuildPlugin' must be used. Method will create a plugin for esbuild. This method takes argument like below.
 
 | Name                      | Requirement       | Description
-| ---                       | ---               | ---        
-| traceableConfigs            | Required          | Array of instrumentation defination string
+| ---                       | ---               | ---
+| traceableConfigs          | Required          | Array of instrumentation defination string
 
 </br>
 
