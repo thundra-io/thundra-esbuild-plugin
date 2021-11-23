@@ -1,6 +1,6 @@
 {
   "name": "@thundra/esbuild-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The Esbuild plugin to help Thundra's Node.js agent.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
