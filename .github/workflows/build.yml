@@ -1,0 +1,24 @@
+name: NPM Build
+
+on:
+  pull_request:
+    branches:
+      - "master"
+jobs:
+  build:
+    name: Run NPM Compile
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          cache: "npm"
+      - name: NPM Install
+        run: npm install
+      - name: NPM Lint
+        run: npm run lint
+      - name: NPM Compile
+        run: npm run compile

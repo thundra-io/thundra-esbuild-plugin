@@ -9,7 +9,14 @@
   ],
   "scripts": {
     "lint": "eslint src --ext .ts",
-    "compile": "tsc"
+    "compile": "tsc",
+    "release-patch": "release-it --ci --git.commit --git.push --git.tag --git.tagName='v${version}' --github.release --no-git.requireCleanWorkingDir --no-git.requireUpstream --npm.publish --npm.skipChecks",
+    "release-minor": "release-it minor --ci --git.commit --git.push --git.tag --git.tagName='v${version}' --github.release --no-git.requireCleanWorkingDir --no-git.requireUpstream --npm.publish --npm.skipChecks",
+    "release-major": "release-it major --ci --git.commit --git.push --git.tag --git.tagName='v${version}' --github.release --no-git.requireCleanWorkingDir --no-git.requireUpstream --npm.publish --npm.skipChecks",
+    "release-patch-without-tag": "release-it --ci --no-git.commit --no-git.push --no-git.tag --no-git.tagName='v${version}' --no-github.release --no-git.requireCleanWorkingDir --no-git.requireUpstream --npm.publish --npm.skipChecks",
+    "release-minor-without-tag": "release-it minor --ci --no-git.commit --no-git.push --no-git.tag --no-git.tagName='v${version}' --no-github.release --no-git.requireCleanWorkingDir --no-git.requireUpstream --npm.publish --npm.skipChecks",
+    "release-major-without-tag": "release-it major --ci --no-git.commit --no-git.push --no-git.tag --no-git.tagName='v${version}' --no-github.release --no-git.requireCleanWorkingDir --no-git.requireUpstream --npm.publish --npm.skipChecks",
+    "release-dry-run": "release-it --dry-run --ci --no-git.commit --no-git.push --no-git.tag --no-git.tagName='v${version}' --no-github.release --no-git.requireCleanWorkingDir --no-git.requireUpstream --no-npm.publish"
   },
   "repository": {
     "type": "git",
@@ -26,6 +33,7 @@
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
     "eslint": "^8.2.0",
+    "release-it": "^14.11.8",
     "typescript": "^4.4.4"
   },
   "dependencies": {

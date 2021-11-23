@@ -1,0 +1,37 @@
+name: NPM Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_scale:
+        description: "Version scale"
+        required: true
+        default: "patch"
+jobs:
+  publish:
+    name: Run NPM Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Configure CI Git User
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+      - name: Set up NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          cache: "npm"
+          registry-url: https://registry.npmjs.org
+      - name: NPM Install
+        run: npm install
+      - name: NPM Lint
+        run: npm run lint
+      - name: NPM Compile
+        run: npm run compile
+      - name: NPM Publish
+        run: npm run release-${{ github.event.inputs.version_scale }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.THUNDRA_NPM_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.THUNDRA_GITHUB_ACCESS_TOKEN }}
